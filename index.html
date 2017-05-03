@@ -3,118 +3,38 @@
 
 <head>
   <meta charset="utf-8">
-  <title>firstScene</title>
+  <title>superHands</title>
   <meta name="description" content="Hello, World! - A-Frame">
   <script src="src/aframe.min.js"></script>
-  <script src="src/aabb-collider.js"></script>
-  <script src="src/grab.js"></script>
+  <script src="src/aframe-extras.min.js"></script>
   <script src="src/super-hands.min.js"></script>
   <script src="src/aframe-teleport-controls.min.js"></script>
-  <!-- Fisica da provare -->
-  <script src="src/aframe-physics-system.min.js"></script>
 </head>
 
 <body>
-  <a-scene>
-    <a-assets>
-        <a-mixin hoverable clickable grabbable stretchable drag-droppable id="sphere" geometry="primitive: sphere; radius: 0.3;" material="color: blue"></a-mixin>
-        <!--<a-mixin hoverable clickable grabbable stretchable drag-droppable id="sphere-collided" geometry="primitive: sphere; radius: 0.3;" material="color: white;"></a-mixin>
-        <a-mixin id="sphere-grabbed" geometry="primitive: sphere; radius: 0.3;" material="color: yellow;"></a-mixin>-->
-        <a-mixin hoverable clickable grabbable stretchable drag-droppable id="cube" geometry="primitive: box; height: 0.40; width: 0.40; depth: 0.40" material="color: purple"></a-mixin>
-        <!--<a-mixin id="cube-collided" geometry="primitive: box; height: 0.40; width: 0.40; depth: 0.40" material="color: white"></a-mixin>
-        <a-mixin id="cube-grabbed" geometry="primitive: box; height: 0.40; width: 0.40; depth: 0.40" material="color: yellow"></a-mixin>-->
-        <a-mixin hoverable clickable grabbable stretchable drag-droppable id="cylinder" geometry="primitive: cylinder; radius: 0.2; height:1;" material="color: green"></a-mixin>
-        <!--<a-mixin id="cylinder-collided" geometry="primitive:cylinder; radius: 0.2; height:1;" material="color: white;"></a-mixin>
-        <a-mixin id="cylinder-grabbed" geometry="primitive:cylinder; radius: 0.2; height:1;" material="color: yellow;"></a-mixin>-->
-        <a-mixin hoverable clickable grabbable stretchable drag-droppable id="torus" geometry="primitive: torus; arc: 360; radius: 0.6; radius-tabular: 0.01;" material="color: brown"></a-mixin>
-        <!--<a-mixin id="torus-collided" geometry="primitive:torus; arc: 360; radius: 0.6; radius-tabular: 0.01;" material="color: white;"></a-mixin>
-        <a-mixin id="torus-grabbed" geometry="primitive:torus; arc: 360; radius: 0.6; radius-tabular: 0.01;" material="color: yellow;"></a-mixin>-->
-    </a-assets>
-    
-    <!-- Controlli vive + camera -->
-    
-      <a-entity hand-controls="left" super-hands sphere-collider="objects: a-box" teleport-controls></a-entity>
-      <a-entity hand-controls="right" super-hands sphere-collider="objects: a-box" teleport-controls></a-entity>
-    
-    
+      <a-scene>
+      <a-assets>
+        <a-mixin id="controller" super-hands sphere-collider="objects: .cube"></a-mixin>
+        <a-mixin id="cube" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5" hoverable grabbable stretchable drag-droppable event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25"></a-mixin>
+        <a-mixin id="cube-hovered" material="opacity: 0.7; transparent: true"></a-mixin>
+        <a-mixin id="cube-dragover" material="wireframe: true;"></a-mixin>
+      </a-assets>
 
-   
+      <a-entity hand-controls="left" mixin="controller"></a-entity>
+      <a-entity hand-controls="right" mixin="controller"></a-entity>
 
-      <!-- Lato sinistro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="10 5 -3" rotation="0 0 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- Lato destro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="-9 5 -3" rotation="0 0 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- fondo -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="0.5 5 -13" rotation="0 90 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- ingresso sinistro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="-6 5 7" rotation="0 90 0" color="#757575" depth="7" height="10" width="1"></a-box>
-      <!-- ingresso destro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="7 5 7" rotation="0 90 0" color="#757575" depth="7" height="10" width="1"></a-box>
-      <!-- soffitto -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="0.5 10.5 -3" rotation="0 0 90" color="#757575" depth="21" height="20" width="1"></a-box>
-    
+      <a-entity class="cube" mixin="cube" position="0 1 -1" material="color: red"></a-entity>
+      <a-entity class="cube" mixin="cube" position="0 1.6 -1" material="color: red"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 1 -1" material="color: blue"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 1.6 -1" material="color: blue"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 1 -1" material="color: green"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 1.6 -1" material="color: green"></a-entity>
 
-    <a-entity rotation="0 180 0" position="1.2 -0.5 30">
-      <!-- Lato sinistro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="10 5 -3" rotation="0 0 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- Lato destro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="-9 5 -3" rotation="0 0 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- fondo -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="0.5 5 -13" rotation="0 90 0" color="#757575" depth="20" height="10" width="1"></a-box>
-      <!-- ingresso sinistro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="-6 5 7" rotation="0 90 0" color="#757575" depth="7" height="10" width="1"></a-box>
-      <!-- ingresso destro -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="7 5 7" rotation="0 90 0" color="#757575" depth="7" height="10" width="1"></a-box>
-      <!-- soffitto -->
-      <a-box hoverable clickable grabbable stretchable drag-droppable position="0.5 10.5 -3" rotation="0 0 90" color="#757575" depth="21" height="20" width="1"></a-box>
-    </a-entity>
+      <a-plane rotation="-90 0 0" color="grey" repeat="50 50" width="50" height="50"></a-plane>
 
-    <a-entity layout="type: line; margin: 1" position="-2 -0.5 -2">
-      <a-entity class="sphere" mixin="sphere" position="2.5 1 -2"></a-entity>
-      <a-entity class="sphere" mixin="sphere" position="1.5 1 -2"></a-entity>
-      <a-entity class="sphere" mixin="sphere" position="0.5 1 -2"></a-entity>
-    </a-entity>
+      <a-sky color="black"></a-sky>
 
-    <a-entity layout="type: line; margin: 1" position="-2 -0.5 -2">
-      <a-entity class="cube" mixin="cube" position="2.5 1 2"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1.5 1 2"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0.5 1 2"></a-entity>
-    </a-entity>
-
-    <a-entity layout="type: line; margin: 1" position="-2 -0.5 -2">
-      <a-entity class="cylinder" mixin="cylinder" position="0 1 1"></a-entity>
-      <a-entity class="cylinder" mixin="cylinder" position="0 1 0"></a-entity>
-      <a-entity class="cylinder" mixin="cylinder" position="0 1 -1"></a-entity>
-    </a-entity>
-
-    <a-entity layout="type: line; margin: 2" position="-2 -0.5 -2">
-      <a-entity class="torus" mixin="torus" position="4 1.5 1.5"></a-entity>
-      <a-entity class="torus" mixin="torus" position="4 1.5 0"></a-entity>
-      <a-entity class="torus" mixin="torus" position="4 1.5 -1.5"></a-entity>
-    </a-entity>
-
-    <a-entity layout="type: line; margin: 1" position="-0.5 -0.5 34">
-      <a-entity class="cube" mixin="cube" position="2.5 1 34"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1.5 1 34"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0.5 1 34"></a-entity>
-    </a-entity>
-
-    <a-entity layout="type: line; margin: 1" position="-0.5 -0.5 32">
-      <a-entity class="cube" mixin="cube" position="2.5 1 32"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1.5 1 32"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0.5 1 32"></a-entity>
-    </a-entity>
-
-    <a-entity layout="type: line; margin: 1" position="-0.5 -0.5 30">
-      <a-entity class="cube" mixin="cube" position="2.5 1 30"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1.5 1 30"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0.5 1 30"></a-entity>
-    </a-entity>
-
-    <!-- piano-->
-    <a-plane id="plane" position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#F9A825"></a-plane>
-    <a-sky color="black"></a-sky>
-  </a-scene>
+    </a-scene>
 </body>
 
 </html>

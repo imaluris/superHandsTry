@@ -30,6 +30,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-browserify');
   
   // Default task.
   grunt.registerTask('start', ['concurrent:startProg']);

@@ -12,24 +12,45 @@
       <a-scene>
       <a-assets>
         <img id="texture" src="naccio.png">
-        <a-mixin id="controller" super-hands controller-loaded sphere-collider="objects: .cube" teleport-controls></a-mixin>
+        <a-mixin id="controller" super-hands controller-loaded sphere-collider="objects: .cube, .sphere" teleport-controls></a-mixin>
         <a-mixin id="controller-loaded" static-body="shape: sphere; sphereRadius: 0.02;"></a-mixin>
         <a-mixin id="cube" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5" hoverable grabbable stretchable drag-droppable dynamic-body></a-mixin>
         <a-mixin id="cube-hovered" material="opacity: 0.7; transparent: true"></a-mixin>
         <a-mixin id="cube-dragover" material="wireframe: true;"></a-mixin>
+
+        <a-mixin id="sphere" geometry="primitive: sphere; radius: 0.4" hoverable grabbable stretchable drag-droppable dynamic-body></a-mixin>
+        <a-mixin id="sphere-hovered" material="opacity: 0.7; transparent: true"></a-mixin>
+        <a-mixin id="sphere-dragover" material="wireframe: true;"></a-mixin>
       </a-assets>
 
       <a-entity hand-controls="left" mixin="controller"></a-entity>
       <a-entity hand-controls="right" mixin="controller"></a-entity>
 
-      <a-entity class="cube" mixin="cube" position="0 1 -1" material="src: naccio.png"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0 1.6 -1" material="src: naccio.png"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 1 -1" material="src: naccio.png"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 1.6 -1" material="src: naccio.png"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 1 -1" material="src: naccio.png"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 1.6 -1" material="src: naccio.png"></a-entity>
+      <!-- Lato sinistro -->
+      <a-box static-body position="6 5 -3" rotation="0 0 0" color="#757575" depth="14" height="10" width="1"></a-box>
+      <!-- Lato destro -->
+      <a-box static-body position="-5 5 -3" rotation="0 0 0" color="#757575" depth="14" height="10" width="1"></a-box>
+      <!-- fondo -->
+      <a-box static-body position="0.5 5 -9.5" rotation="0 90 0" color="#757575" depth="10" height="10" width="1"></a-box>
+      <!-- ingresso sinistro -->
+      <a-box static-body position="-3.75 5 4.5" rotation="0 90 0" color="#757575" depth="3.5" height="10" width="1"></a-box>
+      <!-- ingresso destro -->
+      <a-box static-body position="4.75 5 4.5" rotation="0 90 0" color="#757575" depth="3.5" height="10" width="1"></a-box>
+      <!-- soffitto -->
+      <a-box static-body position="0.5 10.5 -2.5" rotation="0 0 90" color="#757575" depth="15" height="12" width="1"></a-box>
 
-      <a-plane static-body rotation="-90 0 0" color="grey" repeat="50 50" width="50" height="50"></a-plane>
+      <a-entity class="cube" mixin="cube" position="0 1 -4" material="src: naccio.png"></a-entity>
+      <a-entity class="cube" mixin="cube" position="0 1.6 -4" material="src: naccio.png"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 1 -4" material="src: naccio.png"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 1.6 -4" material="src: naccio.png"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 1 -4" material="src: naccio.png"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 1.6 -4" material="src: naccio.png"></a-entity>
+
+      <a-entity class="sphere" mixin="sphere" position="-2 1 1.5" rotation: "0 0 90" material="src: naccio.png"></a-entity>
+      <a-entity class="sphere" mixin="sphere" position="-2 1 0" material="src: naccio.png"></a-entity>
+      <a-entity class="sphere" mixin="sphere" position="-2 1 -1.5" material="src: naccio.png"></a-entity>
+
+      <a-plane static-body rotation="-90 0 0" color="grey" repeat="50 50" width="100" height="100"></a-plane>
 
       <a-sky color="black"></a-sky>
 

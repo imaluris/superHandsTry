@@ -16,13 +16,16 @@ gulp.task('build', function() {
 
 gulp.task('serve', serve(['public', 'build']));
 
+
 gulp.task('open', function(){
   var options = {
     uri: 'localhost:3000',
-    app: 'chrome'
+    app: 'firefox'
   };
-  gulp.src("index.html")
+  gulp.src("public/index.html")
   .pipe(open(options));
 });
+
+
 
 gulp.task('start', ['build', 'serve', 'open']);

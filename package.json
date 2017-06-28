@@ -10,7 +10,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-open": "^2.0.0",
     "gulp-serve": "^1.4.0",
-    "super-hands": "^0.3.1"
+    "super-hands": "^1.0.0"
   },
   "dependencies": {
     "aframe": "^0.5.0"
